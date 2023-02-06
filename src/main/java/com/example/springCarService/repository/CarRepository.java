@@ -2,17 +2,16 @@ package com.example.springCarService.repository;
 
 import com.example.springCarService.model.Car;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class CarRepository {
-    private List<Car> carList = new ArrayList<>();
+    private Map<UUID, Car> carMap = new HashMap<>();
 
     public void addCar(Car car) {
-        carList.add(car);
+        carMap.put(UUID.fromString(car.toString()), car);
     }
 
-    public List<Car> getCars() {
-        return carList;
+    public Map<UUID, Car> getCars() {
+        return carMap;
     }
 }

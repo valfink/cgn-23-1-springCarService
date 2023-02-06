@@ -3,7 +3,8 @@ package com.example.springCarService.service;
 import com.example.springCarService.model.Car;
 import com.example.springCarService.repository.CarRepository;
 
-import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 public class CarService {
     private CarRepository carRepository = new CarRepository();
@@ -12,7 +13,7 @@ public class CarService {
         carRepository.addCar(car);
     }
 
-    public List<Car> getCars() {
+    public Map<UUID, Car> getCars() {
         return carRepository.getCars();
     }
 }
