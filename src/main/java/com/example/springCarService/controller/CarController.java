@@ -5,6 +5,7 @@ import com.example.springCarService.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
@@ -20,5 +21,12 @@ public class CarController {
     @GetMapping("cars")
     public Map<String, Car> getAllCars() {
         return carService.getCars();
+    }
+
+    @DeleteMapping("car/{id}")
+    public Car deleteCar(@PathVariable String id) {
+        Optional<Car> deletedCar = carService.deleteCar(id);
+        return deletedCar.orElse(null);
+        //return deletedCar.orElseThrow();
     }
 }

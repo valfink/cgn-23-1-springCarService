@@ -4,6 +4,7 @@ import com.example.springCarService.model.Car;
 import com.example.springCarService.repository.CarRepository;
 
 import java.util.Map;
+import java.util.Optional;
 
 public class CarService {
     private CarRepository carRepository = new CarRepository();
@@ -14,5 +15,9 @@ public class CarService {
 
     public Map<String, Car> getCars() {
         return carRepository.getCars();
+    }
+
+    public Optional<Car> deleteCar(String id) {
+        return carRepository.deleteCar(id);
     }
 }

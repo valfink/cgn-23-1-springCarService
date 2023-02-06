@@ -14,4 +14,12 @@ public class CarRepository {
     public Map<String, Car> getCars() {
         return carMap;
     }
+
+    public Optional<Car> deleteCar(String id) {
+        Optional<Car> result = Optional.of(carMap.get(id));
+        if (result.isPresent()) {
+            carMap.remove(id);
+        }
+        return result;
+    }
 }
