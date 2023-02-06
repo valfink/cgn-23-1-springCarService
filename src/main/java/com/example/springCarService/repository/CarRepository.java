@@ -26,7 +26,7 @@ public class CarRepository {
     public Optional<Car> editCar(String id, Car editedCar) {
         Optional<Car> result = Optional.ofNullable(carMap.get(id));
         if (result.isPresent()) {
-            carMap.put(id, editedCar);
+            carMap.replace(id, editedCar);
             result = Optional.of(carMap.get(id));
         }
         return result;
