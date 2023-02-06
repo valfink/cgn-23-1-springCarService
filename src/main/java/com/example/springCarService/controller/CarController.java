@@ -5,6 +5,7 @@ import com.example.springCarService.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @RestController
@@ -15,7 +16,7 @@ public class CarController {
     public Car postNewCar(@RequestBody Car car) {
         carService.addCar(car);
         return car;
-        // lame, should get the new car directly from the service!
+        // lame, should get the new car directly from the service including the uuid!
     }
 
     @GetMapping("cars")
@@ -26,7 +27,12 @@ public class CarController {
     @DeleteMapping("car/{id}")
     public Car deleteCar(@PathVariable String id) {
         Optional<Car> deletedCar = carService.deleteCar(id);
-        return deletedCar.orElse(null);
-        //return deletedCar.orElseThrow();
+        return deletedCar.orElseThrow(NoSuchElementException::new);
+    }
+
+    @PutMapping("car/{id}")
+    public Car editCar(@PathVariable String id, @RequestBody Car editedCar) {
+        Optional<Car> returnCar = carService.editCar(id, editedCar);
+        return returnCar.orElseThrow(NoSuchElementException::new);
     }
 }

@@ -20,4 +20,8 @@ public class CarService {
     public Optional<Car> deleteCar(String id) {
         return carRepository.deleteCar(id);
     }
+
+    public Optional<Car> editCar(String id, Car editedCar) {
+        return carRepository.editCar(id, editedCar);
+    }
 }

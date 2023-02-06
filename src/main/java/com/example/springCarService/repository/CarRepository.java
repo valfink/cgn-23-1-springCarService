@@ -16,9 +16,18 @@ public class CarRepository {
     }
 
     public Optional<Car> deleteCar(String id) {
-        Optional<Car> result = Optional.of(carMap.get(id));
+        Optional<Car> result = Optional.ofNullable(carMap.get(id));
         if (result.isPresent()) {
             carMap.remove(id);
+        }
+        return result;
+    }
+
+    public Optional<Car> editCar(String id, Car editedCar) {
+        Optional<Car> result = Optional.ofNullable(carMap.get(id));
+        if (result.isPresent()) {
+            carMap.put(id, editedCar);
+            result = Optional.of(carMap.get(id));
         }
         return result;
     }
