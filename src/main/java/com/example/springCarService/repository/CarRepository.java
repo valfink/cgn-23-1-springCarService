@@ -7,8 +7,10 @@ import java.util.*;
 public class CarRepository {
     private Map<String, Car> carMap = new HashMap<>();
 
-    public void addCar(Car car) {
-        carMap.put(UUID.randomUUID().toString(), car);
+    public Map<String, Car> addCar(Car car) {
+        String newID = UUID.randomUUID().toString();
+        carMap.put(newID, car);
+        return Map.of(newID, car);
     }
 
     public Map<String, Car> getCars() {

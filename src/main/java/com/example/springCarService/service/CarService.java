@@ -9,8 +9,8 @@ import java.util.Optional;
 public class CarService {
     private CarRepository carRepository = new CarRepository();
 
-    public void addCar(Car car) {
-        carRepository.addCar(car);
+    public Map<String, Car> addCar(Car car) {
+        return carRepository.addCar(car);
     }
 
     public Map<String, Car> getCars() {

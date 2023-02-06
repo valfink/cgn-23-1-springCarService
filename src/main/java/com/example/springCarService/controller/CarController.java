@@ -13,10 +13,8 @@ import java.util.Optional;
 public class CarController {
     private CarService carService = new CarService();
     @PostMapping("car/new")
-    public Car postNewCar(@RequestBody Car car) {
-        carService.addCar(car);
-        return car;
-        // lame, should get the new car directly from the service including the uuid!
+    public Map<String, Car> postNewCar(@RequestBody Car car) {
+        return carService.addCar(car);
     }
 
     @GetMapping("cars")
