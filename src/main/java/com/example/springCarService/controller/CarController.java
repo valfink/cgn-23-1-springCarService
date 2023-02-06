@@ -2,16 +2,18 @@ package com.example.springCarService.controller;
 
 import com.example.springCarService.model.Car;
 import com.example.springCarService.service.CarService;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/api")
 public class CarController {
-    private CarService carService = new CarService();
+    private CarService carService;
     @PostMapping("car/new")
     public Map<String, Car> postNewCar(@RequestBody Car car) {
         return carService.addCar(car);

@@ -1,11 +1,15 @@
 package com.example.springCarService.repository;
 
 import com.example.springCarService.model.Car;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
 
+@AllArgsConstructor
+@Repository
 public class CarRepository {
-    private Map<String, Car> carMap = new HashMap<>();
+    private Map<String, Car> carMap;
 
     public Map<String, Car> addCar(Car car) {
         String newID = UUID.randomUUID().toString();
