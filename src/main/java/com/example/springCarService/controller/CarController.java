@@ -5,7 +5,6 @@ import com.example.springCarService.service.CarService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api")
@@ -19,7 +18,7 @@ public class CarController {
     }
 
     @GetMapping("cars")
-    public Map<UUID, Car> getAllCars() {
+    public Map<String, Car> getAllCars() {
         return carService.getCars();
     }
 }
